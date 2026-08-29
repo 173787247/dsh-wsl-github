@@ -1,0 +1,8 @@
+- insert:
+    - id: dsh-wsl-github
+      name: dsh-wsl-github
+      config:
+        timeoutMs: 20000
+        appId: ""
+        privateKeyPath: ""
+        installationId: ""

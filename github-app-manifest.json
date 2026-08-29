@@ -1,0 +1,15 @@
+{
+  "name": "dsh-wsl-github",
+  "url": "https://github.com/173787247/dsh-wsl-kit",
+  "description": "WSL agent: current-repo open PRs and latest Actions (read-only GitHub App).",
+  "public": false,
+  "hook_attributes": {
+    "url": "https://example.com/",
+    "active": false
+  },
+  "default_permissions": {
+    "metadata": "read",
+    "pull_requests": "read",
+    "actions": "read"
+  }
+}
