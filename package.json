@@ -27,6 +27,8 @@
     "README.md",
     "README.zh.md",
     "LICENSE",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
     "github-app-manifest.json"
   ],
   "keywords": [
