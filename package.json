@@ -25,7 +25,9 @@
     "lib",
     "cordis.patch.yml",
     "README.md",
-    "LICENSE"
+    "README.zh.md",
+    "LICENSE",
+    "github-app-manifest.json"
   ],
   "keywords": [
     "dsh-plugin",
