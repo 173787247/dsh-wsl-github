@@ -99,6 +99,14 @@ Get-Content "$HOME\.dsh\dsh-wsl-github.env" | ForEach-Object {
 不用脚本时：打开 [注册 GitHub App](https://github.com/settings/apps/new)，Homepage 填 `https://github.com/173787247/dsh-wsl-kit`，权限同上、关掉 webhook，生成私钥后：
 
 ```sh
+cp examples/dsh-wsl-github.env.example ~/.dsh/dsh-wsl-github.env
+# 编辑填入 GITHUB_APP_ID，PEM 放到 ~/.dsh/dsh-wsl-github.pem
+source "$HOME/.dsh/dsh-wsl-github.env"
+```
+
+或手动：
+
+```sh
 export GITHUB_APP_ID=123456
 export GITHUB_APP_PRIVATE_KEY_PATH="$HOME/.dsh/dsh-wsl-github.pem"
 ```
