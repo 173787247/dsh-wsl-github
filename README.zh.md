@@ -1,4 +1,6 @@
 # dsh-wsl-github
+> **套件安装：** 见 [dsh-wsl-kit](https://github.com/173787247/dsh-wsl-kit)。推荐 `KIT_SET=daily` | `llm` | `github` | `full`。故障树：[TROUBLESHOOTING.zh.md](https://github.com/173787247/dsh-wsl-kit/blob/master/docs/TROUBLESHOOTING.zh.md)。
+
 
 DeepSeek Harness 工具：**`github_app_hint`** + **`github_repo_status`** — 用 GitHub App 鉴权，查看当前仓库未关闭的 PR 与最近一次 Actions。
 
