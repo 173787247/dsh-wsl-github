@@ -42,8 +42,10 @@ DSH 在 **WSL**、聊天在 **Windows 浏览器**，正是 kit 的主场。连 G
 
 | 工具 | 作用 |
 |------|------|
-| `github_app_hint` | 是否已配置 App，以及怎么配（不回传密钥） |
+| `github_app_hint` | 是否已配置 App / `~/.dsh/dsh-wsl-github.env`（只查存在性）、配置步骤与 vs cred/ssh/`win_open_url` 分工（不回传密钥） |
 | `github_repo_status` | 未关闭 PR（最多 5 条）+ 最近一次 Actions。可传 `repo`，默认 `git origin` |
+
+配好 env 后可自测 `github_app_hint`（不做真实 App 冒烟，需用户 PEM）。
 
 ## 端到端用法（WSL）
 

@@ -15,6 +15,7 @@ import {
 } from "./lib/api.js";
 import {
   buildAppHint,
+  detectGithubEnvFile,
   formatHintReport,
   formatStatusReport,
 } from "./lib/github.js";
@@ -54,6 +55,8 @@ export function apply(ctx, config = {}) {
           privateKeySet: { type: "boolean" },
           installationIdSet: { type: "boolean" },
           tokenFallbackSet: { type: "boolean" },
+          envFilePath: { type: "string" },
+          envFileExists: { type: "boolean" },
           advice: { type: "array", items: { type: "string" } },
         },
       },
@@ -63,7 +66,13 @@ export function apply(ctx, config = {}) {
     isConcurrencySafe: () => true,
     execute() {
       const status = publicAuthStatus(resolveAuthSources(config));
-      return { ...status, advice: buildAppHint(status) };
+      const envFile = detectGithubEnvFile();
+      return {
+        ...status,
+        envFilePath: envFile.path,
+        envFileExists: envFile.exists,
+        advice: buildAppHint(status, { envFile }),
+      };
     },
     presentCall: () => ({ card: "generic", title: "GitHub App hint" }),
     presentResult: (_args, result) => (

@@ -1,7 +1,7 @@
 {
   "name": "dsh-wsl-github",
-  "version": "0.1.0",
-  "description": "DeepSeek Harness tools: GitHub App auth plus current-repo PR/Actions status from WSL (never dumps secrets).",
+  "version": "0.2.0",
+  "description": "GitHub App tools for WSL dsh: hint (env file existence) + repo PR/Actions status; never dumps secrets.",
   "license": "MIT",
   "repository": {
     "type": "git",

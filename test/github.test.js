@@ -17,6 +17,7 @@ import {
 import { parseGithubRepo } from "../lib/git.js";
 import {
   buildAppHint,
+  detectGithubEnvFile,
   formatHintReport,
   formatStatusReport,
   looksLikeSecret,
@@ -116,6 +117,23 @@ describe("api helpers", () => {
   });
 });
 
+describe("detectGithubEnvFile", () => {
+  it("reports existence without reading file contents", () => {
+    const missing = detectGithubEnvFile({
+      home: "/tmp/home-a",
+      exists: () => false,
+    });
+    assert.equal(missing.exists, false);
+    assert.match(missing.path, /dsh-wsl-github\.env$/);
+
+    const present = detectGithubEnvFile({
+      home: "/tmp/home-b",
+      exists: (p) => p.includes("dsh-wsl-github.env"),
+    });
+    assert.equal(present.exists, true);
+  });
+});
+
 describe("reports", () => {
   it("setup hint never dumps secrets", () => {
     const advice = buildAppHint({ mode: "missing", appIdSet: false, privateKeySet: false });
@@ -131,6 +149,24 @@ describe("reports", () => {
     assert.match(text, /Never paste/);
     assert.equal(looksLikeSecret(text), false);
     assert.ok(!text.includes("ghp_"));
+  });
+
+  it("mentions env file missing and role split", () => {
+    const advice = buildAppHint(
+      { mode: "missing", appIdSet: false, privateKeySet: false },
+      { envFile: { path: "/home/u/.dsh/dsh-wsl-github.env", exists: false } },
+    );
+    assert.ok(advice.some((t) => /No .*dsh-wsl-github\.env/i.test(t)));
+    assert.ok(advice.some((t) => /cred_hint/i.test(t) && /ssh_agent_hint/i.test(t)));
+  });
+
+  it("mentions env file present without reading secrets", () => {
+    const advice = buildAppHint(
+      { mode: "github-app", appIdSet: true, privateKeySet: true },
+      { envFile: { path: "/home/u/.dsh/dsh-wsl-github.env", exists: true } },
+    );
+    assert.ok(advice.some((t) => /Found .*dsh-wsl-github\.env/i.test(t)));
+    assert.ok(advice.every((t) => !looksLikeSecret(t)));
   });
 
   it("status report lists PR URLs for win_open_url", () => {

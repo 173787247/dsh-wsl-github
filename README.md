@@ -42,8 +42,10 @@ Suite overview: [dsh-wsl-kit README](https://github.com/173787247/dsh-wsl-kit#re
 
 | Tool | Role |
 |------|------|
-| `github_app_hint` | Whether App credentials are present, plus setup steps (no secrets) |
+| `github_app_hint` | Whether App credentials / `~/.dsh/dsh-wsl-github.env` exist (existence only), setup + role split vs cred/ssh/`win_open_url` (no secrets) |
 | `github_repo_status` | Open PRs (up to 5) + latest Actions run. `repo` optional; default is `git origin` |
+
+After configuring the env file, self-check with `github_app_hint` (no live App e2e in CI — needs your PEM).
 
 ## End-to-end usage (WSL)
 
