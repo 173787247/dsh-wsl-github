@@ -8,6 +8,18 @@ DeepSeek Harness 工具：**`github_app_hint`** + **`github_repo_status`** — �
 
 [English → README.md](./README.md)
 
+## 在套件里的位置
+
+提示 GitHub App 环境文件在不在，并报告仓库 PR / Actions。绝不倾倒密钥。
+
+```mermaid
+flowchart LR
+  agent["dsh agent"] --> gh["dsh-wsl-github"] --> api["GitHub API 状态"]
+```
+
+整套关系图和版本快照：[dsh-wsl-kit 中文说明](https://github.com/173787247/dsh-wsl-kit/blob/master/README.zh.md)。本插件是 **0.2.0**（github）。不要把那份总表抄进本 README。
+
+
 ---
 ## 兼容性
 
