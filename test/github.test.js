@@ -95,7 +95,7 @@ describe("api helpers", () => {
         return json({ full_name: "acme/demo", html_url: "https://github.com/acme/demo", default_branch: "master", private: false });
       }
       if (String(url).includes("/pulls?")) {
-        return json([{ number: 3, title: "Fix WSL path", html_url: "https://github.com/acme/demo/pull/3", user: { login: "rchua" } }]);
+        return json([{ number: 3, title: "Fix WSL path", html_url: "https://github.com/acme/demo/pull/3", user: { login: "tester" } }]);
       }
       if (String(url).includes("/actions/runs")) {
         return json({
